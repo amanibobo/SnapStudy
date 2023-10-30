@@ -71,6 +71,7 @@ const home = () => {
         <button  style={addButtonStyle}>+</button>
       </Link>
     </div>
+    
   );
 };
 

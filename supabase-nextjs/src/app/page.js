@@ -1,78 +1,57 @@
+"use client"
+
+import React, { useState } from 'react';
+import Router from 'next/router';
 import Link from 'next/link';
 
-const notes = [
-  { name: 'Note 1', subject: 'Math', date: '2023-10-26' },
-  { name: 'Note 2', subject: 'Science', date: '2023-10-25' },
-  // Add more notes here
-];
+const LoginForm = () => {
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
 
-const home = () => {
-  const containerStyle = {
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'center',
-    padding: '20px',
-  };
+  
+  // const handleLogin = (e) => {
+  //   e.preventDefault();
+  //   console.log('Username:', username);
+  //   console.log('Password:', password);
 
-  const navStyle = {
-    display: 'flex',
-    justifyContent: 'space-between',
-    width: '100%',
-  };
-
-  const noteCardStyle = {
-    backgroundColor: '#f0f0f0',
-    border: '1px solid #ccc',
-    borderRadius: '8px',
-    padding: '10px',
-    margin: '10px',
-    width: '300px',
-    boxShadow: '0 2px 4px rgba(0, 0, 0, 0.1)',
-  };
-
-  const addButtonStyle = {
-    backgroundColor: '#0070f3',
-    color: 'white',
-    border: 'none',
-    borderRadius: '50%',
-    padding: '10px',
-    fontSize: '24px',
-    cursor: 'pointer',
-  };
-
-
-
+  //   if(password == "123"){
+  //     Router.push('/home');
+  //   }
+  // };
   return (
-    <div style={containerStyle}>
-      <nav style={navStyle}>
-        <ul>
-          <li>
-            <Link href="/">Home</Link>
-          </li>
-          <li>
-            <Link href="/note">Notes</Link>
-          </li>
-          <li>
-            <Link href="/login">Login</Link>
-          </li>
-        </ul>
-      </nav>
-      <h1>Home Page</h1>
-      <div style={containerStyle}>
-        {notes.map((note, index) => (
-          <div key={index} style={noteCardStyle}>
-            <h2>{note.name}</h2>
-            <p>Subject: {note.subject}</p>
-            <p>Date Added: {note.date}</p>
-          </div>
-        ))}
-      </div>
-      <Link href="/note">
-        <button  style={addButtonStyle}>+</button>
-      </Link>
+    <div>
+      <h2 className='font-bold text-xl'>Login</h2>
+      <form 
+      // onSubmit={handleLogin}
+      >
+        <div>
+          <label htmlFor="username">Username:</label>
+          <input
+            type="text"
+            id="username"
+            value={username}
+            onChange={(e) => setUsername(e.target.value)}
+            required
+          />
+        </div>
+        <div>
+          <label htmlFor="password">Password:</label>
+          <input
+            type="password"
+            id="password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            required
+          />
+        </div>
+        <div>
+          <Link href="/home">
+            <button className='bg-orange-500 py-1 px-4 rounded-md text-white' type="">Login</button>
+          </Link>
+        </div>
+      </form>
     </div>
-    
   );
 };
 
-export default home;
+export default LoginForm;

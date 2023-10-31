@@ -1,7 +1,7 @@
 "use client"
-
 import { useState } from 'react';
 import axios from 'axios'; // You'll need to install axios
+import { createClient } from '@supabase/supabase-js'
 
 const AddNote = () => {
   const [selectedFile, setSelectedFile] = useState(null);

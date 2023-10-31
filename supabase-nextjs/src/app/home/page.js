@@ -1,4 +1,5 @@
  import Link from 'next/link';
+ import { createClient } from '@supabase/supabase-js'
 
 const notes = [
   { name: 'Note 1', subject: 'Math', date: '2023-10-26' },

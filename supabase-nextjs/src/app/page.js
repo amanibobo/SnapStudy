@@ -3,10 +3,25 @@
 import React, { useState } from 'react';
 import Router from 'next/router';
 import Link from 'next/link';
+import {supabase} from "./supabase.js"
 
-const LoginForm = () => {
+
+
+
+
+const LoginForm =  async () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+ 
+  
+  // const { data: UserData} = await supabase.from('UserData').select('*');
+  
+  
+  let { data: UserData, error } = await supabase
+  .from('UserData')
+  .select('Username')
+
+  console.log(UserData);
 
   
   // const handleLogin = (e) => {
@@ -18,6 +33,8 @@ const LoginForm = () => {
   //     Router.push('/home');
   //   }
   // };
+
+
   return (
     <div>
       <h2 className='font-bold text-xl'>Login</h2>

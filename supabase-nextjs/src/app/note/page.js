@@ -1,7 +1,10 @@
 "use client"
-import { useState } from 'react';
+import { useState } from 'react'
 import axios from 'axios'; // You'll need to install axios
-import { createClient } from '@supabase/supabase-js'
+// import {Data} from './data.js';
+
+// const data = new Data();
+
 
 const AddNote = () => {
   const [selectedFile, setSelectedFile] = useState(null);
@@ -10,11 +13,13 @@ const AddNote = () => {
   const handleFileChange = (event) => {
     const file = event.target.files[0];
     setSelectedFile(file);
-
+    // data.uploadFile(file);
     // Create a preview URL for the uploaded image
     const previewURL = URL.createObjectURL(file);
     setImagePreview(previewURL);
   };
+
+
 
   return (
     <>

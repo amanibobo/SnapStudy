@@ -1,18 +1,17 @@
 "use client"
 
 import React, { useState } from 'react';
-import Router from 'next/router';
+import {useRouter} from 'next/router';
 import Link from 'next/link';
-import {supabase} from "./supabase.js"
-import {login} from "./data.js"
+import {Data} from "./data.js";
 
-
+const data = new Data();
 
 const LoginForm =  () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
  
-  const UserData = login();
+  const UserData = data.login();
   console.log(UserData);
 
   const handleLogin = (e) => {
@@ -20,8 +19,10 @@ const LoginForm =  () => {
     console.log('Username:', username);
     console.log('Password:', password);
 
+    const router = useRouter();
+
     if(password == "123"){
-      Router.push('/home');
+      router.push('/home');
     }
   };
 return (
@@ -66,10 +67,10 @@ mb-2" htmlFor="password">Password:</label>
         />
       </div>
       <div className="mt-4 mb-4 h-[50px]">
-        {/* <Link href="/home"> */}
+        <Link href="/home">
           <button className="w-full bg-orange-500 rounded-lg shadow
 h-[40px]" type="submit">Login</button>
-        {/* </Link> */}
+         </Link> 
       </div>
       <div className="text-center">
           <span className="text-gray-600">OR</span>
